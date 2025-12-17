@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Water & Electricity Monitor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        header {
+            background: #1e88e5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+            color: #1e88e5;
+        }
+
+        .value {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .unit {
+            font-size: 14px;
+            color: gray;
+        }
+
+        .info {
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: #1e88e5;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>💧⚡ Smart Water & Electricity Usage Monitor</h1>
+    <p>Monitor • Save • Go Green</p>
+</header>
+
+<section>
+    <h2>📊 Live Usage Dashboard</h2>
+
+    <div class="card-container">
+        <div class="card">
+            <h2>Water Usage</h2>
+            <div class="value" id="water">0</div>
+            <div class="unit">Liters / Day</div>
+        </div>
+
+        <div class="card">
+            <h2>Electricity Usage</h2>
+            <div class="value" id="power">0</div>
+            <div class="unit">kWh / Day</div>
+        </div>
+
+        <div class="card">
+            <h2>Estimated Bill</h2>
+            <div class="value">₹ <span id="bill">0</span></div>
+            <div class="unit">Today</div>
+        </div>
+    </div>
+</section>
+
+<section class="info">
+    <h2>🌍 Why This System?</h2>
+    <ul>
+        <li>Reduce water and electricity wastage</li>
+        <li>Track daily, weekly, and monthly usage</li>
+        <li>Prevent sudden high bills</li>
+        <li>Encourage eco-friendly habits</li>
+    </ul>
+
+    <h2>🛠 Technologies Used</h2>
+    <p>
+        ESP32 / NodeMCU • Water Flow Sensor • Current Sensor •
+        Wi-Fi • Firebase • Android App
+    </p>
+</section>
+
+<footer>
+    <p>IoT Mini Project | Computer Engineering Student</p>
+</footer>
+
+<script>
+    // Demo data simulation (replace with Firebase / ESP32 API later)
+
+    function updateData() {
+        let waterUsage = Math.floor(Math.random() * 300) + 50; // liters
+        let powerUsage = (Math.random() * 5 + 1).toFixed(2);   // kWh
+
+        let waterCost = waterUsage * 0.02;  // ₹ per liter (example)
+        let powerCost = powerUsage * 6;     // ₹ per kWh
+
+        let totalBill = (waterCost + powerCost).toFixed(2);
+
+        document.getElementById("water").innerText = waterUsage;
+        document.getElementById("power").innerText = powerUsage;
+        document.getElementById("bill").innerText = totalBill;
+    }
+
+    setInterval(updateData, 3000); // update every 3 seconds
+</script>
+
+</body>
+</html>
